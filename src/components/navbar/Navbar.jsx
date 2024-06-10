@@ -1,9 +1,13 @@
+import Link from "next/link";
+
 import Links from "./links/Links";
 
 const Navbar = () => {
   return (
     <div className="h-[100px] flex justify-between items-center">
-      <div className="text-3xl font-bold">Logo</div>
+      <Link href="/" className="text-3xl font-bold">
+        Logo
+      </Link>
       <div>
         <Links />
       </div>

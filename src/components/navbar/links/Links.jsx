@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import NavLink from "./navLink/navLink";
+import Image from "next/image";
+
+import { FaXmark } from "react-icons/fa6";
 
 const links = [
   {
@@ -46,18 +49,32 @@ const Links = () => {
           <NavLink item={{ title: "Login", path: "/login" }} />
         )}
       </div>
-      <button
+      {/* <button
         className="block cursor-pointer md:hidden"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => setIsOpen(true)}
       >
         Menu
-      </button>
+      </button> */}
+      <Image
+        className="block cursor-pointer md:hidden"
+        src="/menu.png"
+        alt=""
+        width={25}
+        height={25}
+        onClick={() => setIsOpen(true)}
+      />
       {isOpen && (
-        <div className="flex flex-col items-center justify-center gap-2 md:hidden absolute top-[100px] right-0 w-1/2 h-[calc(100vh-100px)] border-l border-t border-white">
-          {links.map((link) => (
-            <NavLink key={link.title} item={link} />
-          ))}
-        </div>
+        <>
+          <div className="flex flex-col items-center justify-center gap-10 md:hidden absolute top-0 right-0 w-1/3 h-full border-l border-white bg-slate-700 shadow-xl">
+            {links.map((link) => (
+              <NavLink key={link.title} item={link} />
+            ))}
+          </div>
+          <FaXmark
+            onClick={() => setIsOpen(false)}
+            className="absolute top-5 right-5 text-2xl cursor-pointer"
+          />
+        </>
       )}
     </div>
   );

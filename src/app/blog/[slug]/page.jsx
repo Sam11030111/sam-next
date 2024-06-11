@@ -15,26 +15,24 @@ export const generateMetadata = async ({ params }) => {
   };
 };
 
-// const getData = async (slug) => {
-//   const res = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${slug}`,
-//     {
-//       next: {
-//         revalidate: 3600,
-//       },
-//     }
-//   );
+const getData = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`, {
+    next: {
+      revalidate: 3600,
+    },
+  });
 
-//   if (!res.ok) {
-//     throw new Error("Something went wrong");
-//   }
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
 
-//   return res.json();
-// };
+  return res.json();
+};
 
 const SinglePostPage = async ({ params }) => {
   const { slug } = params;
-  const post = await getPost(slug);
+  // const post = await getPost(slug);
+  const post = await getData(slug);
 
   return (
     <div className="flex gap-24">

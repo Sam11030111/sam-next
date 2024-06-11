@@ -4,6 +4,17 @@ import { Suspense } from "react";
 import PostUser from "@/components/postUser/postUser";
 import { getPost } from "@/lib/data";
 
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
+
+  const post = await getPost(slug);
+
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+};
+
 // const getData = async (slug) => {
 //   const res = await fetch(
 //     `https://jsonplaceholder.typicode.com/posts/${slug}`,

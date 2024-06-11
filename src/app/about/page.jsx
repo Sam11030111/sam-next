@@ -1,5 +1,10 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "About Page",
+  description: "About description",
+};
+
 const AboutPage = () => {
   return (
     <div className="text-center md:text-left flex gap-24">

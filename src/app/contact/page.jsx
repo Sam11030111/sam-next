@@ -1,10 +1,11 @@
-"use client";
-
 import Image from "next/image";
 
-const ContactPage = () => {
-  console.log("It works here");
+export const metadata = {
+  title: "Next App Contact Page",
+  description: "Contact description",
+};
 
+const ContactPage = () => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-10 md:gap-24">
       <div className="md:flex-1 md:pl-20 md:relative">

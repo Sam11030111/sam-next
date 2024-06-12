@@ -5,6 +5,7 @@ import NavLink from "./navLink/navLink";
 import Image from "next/image";
 
 import { FaXmark } from "react-icons/fa6";
+import { handleLogout } from "@/lib/action";
 
 const links = [
   {
@@ -25,12 +26,12 @@ const links = [
   },
 ];
 
-const Links = () => {
+const Links = ({ session }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // TEMPORARY
-  const session = true;
-  const isAdmin = true;
+  // const session = true;
+  // const isAdmin = true;
 
   return (
     <div>
@@ -38,12 +39,16 @@ const Links = () => {
         {links.map((link) => (
           <NavLink key={link.title} item={link} />
         ))}
-        {session ? (
+        {session?.user ? (
           <>
-            {isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
-            <button className="p-2 cursor-pointer font-bold bg-red-300 text-white rounded-lg text-sm">
-              Logout
-            </button>
+            {session.user?.isAdmin && (
+              <NavLink item={{ title: "Admin", path: "/admin" }} />
+            )}
+            <form action={handleLogout}>
+              <button className="p-2 cursor-pointer font-bold bg-red-300 text-white rounded-lg text-sm">
+                Logout
+              </button>
+            </form>
           </>
         ) : (
           <NavLink item={{ title: "Login", path: "/login" }} />

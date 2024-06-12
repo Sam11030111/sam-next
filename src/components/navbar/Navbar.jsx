@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 const Navbar = async () => {
   const session = await auth();
 
-  console.log(session);
+  // console.log(session);
 
   return (
     <div className="h-[100px] flex justify-between items-center z-10">

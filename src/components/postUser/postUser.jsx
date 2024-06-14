@@ -23,7 +23,7 @@ const PostUser = async ({ userId }) => {
   return (
     <div className="flex gap-5">
       <Image
-        src={user.img ? user.img : "/noavatar.png"}
+        src={user?.img ? user.img : "/noavatar.png"}
         alt=""
         width={50}
         height={50}
@@ -31,7 +31,7 @@ const PostUser = async ({ userId }) => {
       />
       <div className="flex flex-col gap-2">
         <span className="text-gray-400 font-bold">Author</span>
-        <span className="font-medium">{user.username}</span>
+        <span className="font-medium">{user?.username}</span>
       </div>
     </div>
   );

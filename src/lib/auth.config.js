@@ -20,8 +20,8 @@ export const authConfig = {
       return session;
     },
     authorized({ auth, request }) {
-      console.log("⭐️:");
-      console.log(auth);
+      // console.log("⭐️:");
+      // console.log(auth);
       const user = auth?.user;
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
       const isOnBlogPage = request.nextUrl?.pathname.startsWith("/blog");
